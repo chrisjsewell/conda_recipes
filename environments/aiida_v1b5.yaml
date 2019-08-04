@@ -116,6 +116,7 @@ dependencies:
   - genson  # to create jsonschema from existing json
   - twine  # for uploading packages to pypi
   - check-manifest
+  - gitchangelog
 
 # after creating:
 # $ pip install --no-deps -e .  # for aiida-core, aiida-crystal17, ...
