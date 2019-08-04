@@ -19,3 +19,18 @@ Then uploaded by:
 ```shell
 conda-build recipes/<package_name>
 ```
+
+Note this requires `conda install anaconda-client`
+
+Conda environments can also be uploaded:
+
+```shell
+anaconda upload -d <description> environments/<name>.yaml
+```
+
+This can be created locally using:
+
+```shell
+conda env create cjs14/<name>
+conda activate <name>
+```

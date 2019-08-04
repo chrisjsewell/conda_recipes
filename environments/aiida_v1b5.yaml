@@ -1,0 +1,124 @@
+# usage: conda env create --file=aiida_v1b5.yaml
+name: aiida_v1b5
+channels:
+  - conda-forge
+  - matsci  # required by pymatgen < 2019
+  - cjs14 # for sqlalchemy-diff, pgtest, prospector, qe-tools, seekpath
+dependencies:
+  - python =3.6
+  - pip
+  - wheel
+
+  # - aiida-core =1.0.0b5
+  - reentry>=1.3.0
+  - python-dateutil==2.8.0
+  - django==1.11.20
+  - tzlocal==1.5.1
+  - pytz==2018.9
+  - PyYAML==3.13
+  - six==1.12.0
+  - psutil==5.5.1
+  - mock==2.0.0
+  - numpy==1.16.4
+  - SQLAlchemy==1.3.3
+  - SQLAlchemy-Utils==0.33.11
+  - alembic==1.0.7
+  - aldjemy==0.9.1
+  - passlib==1.7.1
+  - click==7.0
+  - click-completion==0.5.1
+  - click-config-file==0.5.0
+  - click-spinner==0.1.8
+  - tabulate==0.8.3
+  - ete3==3.1.1
+  - uritools==2.2.0
+  - psycopg2==2.7.6
+  - pip:
+    - psycopg2-binary==2.8
+  # note psycopg2 requirement is 2.8, but this causes an erlang version (22.0) to be installed, 
+  # that can't be used with OSX Yosemite
+  - paramiko==2.6.0
+  - ipython>=4.0,<6.0
+  - plumpy==0.14.2
+  - kiwipy[rmq]==0.5.1
+  - pika==1.0.0
+  - circus==0.15.0
+  - tornado<5.0
+  - simplejson==3.16.0
+  - wrapt ==1.11.1
+  - python-graphviz ==0.10.1
+
+  - aiida-core.services
+  # - postgresql
+  # - rabbitmq-server
+  # aiida-core dev (2nd Aug)
+
+  # - aiida-crystal17 dev =0.10.0b5
+  - ase >=3.12.0,<4.0.0
+  - jsonextended >=0.7.10
+  - jsonschema
+  - pycifrw ==4.4
+  - ruamel.yaml
+  - six
+  - spglib >=1.10.0,<2.0.0
+  - importlib_resources
+
+  # aiida-quantumespresso dev (4 Aug)
+  - pymysql =0.9.3
+  - seekpath =1.8.4
+  - xmlschema =1.0.13
+  - qe-tools =1.1.2
+
+  # aiida-lammps
+  - packaging
+  - python-dateutil
+
+  # science tools
+  - jupyter =1.0
+  - jupyter_contrib_nbextensions
+  - matplotlib
+  - pandas
+  - pymatgen <=2018.12.12
+  - networkx >=2.1  # required by pymatgen
+  - sympy
+  - pint
+
+  # testing
+  - pgtest =1.2.0
+  - pytest =3.6.3
+  - pytest-cov
+  - pytest-regressions
+  - pytest-timeout
+  - sqlalchemy-diff =0.1.3
+
+  # style
+  - rope  
+  - pre_commit =1.17.0
+  - yapf =0.28.0
+  - flake8 <3.8.0,>=3.7.0
+  - flake8-import-order
+  - flake8-builtins
+  - flake8-comprehensions
+  - flake8-docstrings
+  - prospector =1.1.7  
+  # Note: this prospector build has some newer versions than specified in setup.py,
+  # in order to not causes version conflicts with flake8 3.7
+  - toml =0.10.0
+
+  # docs
+  - doc8
+  - ipypublish >=0.10.8
+  - sphinx >=1.6
+  - sphinx_rtd_theme
+  - texsoup
+
+  # other
+  - genson  # to create jsonschema from existing json
+  - twine  # for uploading packages to pypi
+  - check-manifest
+
+# after creating:
+# $ pip install --no-deps -e .  # for aiida-core, aiida-crystal17, ...
+# $ reentry scan
+# $ rabbitmq-server -detached
+# $ rabbitmqctl status
