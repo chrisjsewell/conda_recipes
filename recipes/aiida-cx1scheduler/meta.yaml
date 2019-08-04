@@ -1,0 +1,51 @@
+{% set name = "aiida-cx1scheduler" %}
+{% set version = "0.2.0" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  # created by `python setup.py sdist`
+  url: https://github.com/chrisjsewell/{{ name }}/releases/download/{{ version }}/{{ version }}.tar.gz
+  # sha256 is the prefered checksum -- you can get it for a file with:
+  #  `openssl sha256 <file name>`.
+  # You may need the openssl package, available on conda-forge
+  #  `conda install openssl -c conda-forge`
+  sha256: f58f3a753e8de04c8c8bf7c8b28f667fff2a12b3de5fda9dce951e9603b56eeb
+
+build:
+  number: 0
+  noarch: python
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
+
+requirements:
+  host:
+    - pip
+    - python =2.7
+    - reentry
+    - setuptools
+  run:
+    - aiida-core ==0.12.2
+    - postgresql >=9.4
+    - python =2.7
+    - setuptools
+
+test:
+  imports:
+    - aiida_scheduler_cx1
+    - aiida_scheduler_cx1.schedulers
+    - aiida_scheduler_cx1.schedulers.pbspro_cx1
+
+about:
+  home: https://github.com/chrisjsewell/aiida-scheduler-cx1
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: AiiDA plugin interfacing with the Imperial College London cx1 HPC
+  doc_url: https://github.com/chrisjsewell/aiida-scheduler-cx1
+  dev_url: https://github.com/chrisjsewell/aiida-scheduler-cx1
+
+extra:
+  recipe-maintainers:
+    - chrisjsewell

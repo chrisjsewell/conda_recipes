@@ -1,0 +1,41 @@
+{% set name = "sphinxcontrib-contentui" %}
+{% set version = "0.2.2" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 58e6443ac340c51b51f1d6a0b81406486676230c7bae189118e0b6973051eaa2
+
+build:
+  number: 0
+  noarch: python
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
+
+requirements:
+  host:
+    - pip
+    - python
+    - sphinx >=1.0
+  run:
+    - python
+    - sphinx >=1.0
+
+test:
+  imports:
+    - sphinxcontrib
+
+about:
+  home: https://github.com/ulrobix/sphinxcontrib-contentui
+  license: BSD
+  license_family: BSD
+  license_file: LICENSE
+  summary: Sphinx "contentui" extension
+  doc_url: https://github.com/ulrobix/sphinxcontrib-contentui
+  dev_url: https://github.com/ulrobix/sphinxcontrib-contentui
+
+extra:
+  recipe-maintainers:
+    - chrisjsewell

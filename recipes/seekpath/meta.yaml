@@ -1,0 +1,45 @@
+{% set name = "seekpath" %}
+{% set version = "1.9.2" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: "d9f7dd608666c5678037ed66448665535f551d2953ee804dbb19a4149444dceb"
+
+build:
+  number: 0
+  noarch: "python"
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
+
+requirements:
+  host:
+    - pip
+    - python
+  run:
+    - future >=0.15
+    - numpy >=1.0
+    - python
+    - scipy >=0.17
+    - spglib >=1.14.1
+
+test:
+  imports:
+    - seekpath
+    - seekpath.brillouinzone
+    - seekpath.hpkot
+
+about:
+  home: "http://github.com/giovannipizzi/seekpath"
+  license: "MIT"
+  license_family: "MIT"
+  license_file: "LICENSE.txt"
+  summary: "A module to obtain and visualize k-vector coefficients and obtain band paths in the Brillouin zone of crystal structures"
+  doc_url: ""
+  dev_url: ""
+
+extra:
+  recipe-maintainers:
+    - chrisjsewell

@@ -1,0 +1,40 @@
+{% set name = "pgtest" %}
+{% set version = "1.3.0" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: "3f055058723b26bdd6612726a7bf792f7630ff3f2a4b647e3a3c9bdc0192b641"
+
+build:
+  number: 0
+  noarch: python
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
+
+requirements:
+  host:
+    - pip
+    - python
+  run:
+    - pg8000 >=1.10
+    - python
+
+test:
+  imports:
+    - pgtest
+
+about:
+  home: https://github.com/jamesnunn/pgtest
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Creates a temporary, local PostgreSQL database cluster and server for unittesting, and cleans up after itself
+  doc_url: https://github.com/jamesnunn/pgtest
+  dev_url: https://github.com/jamesnunn/pgtest
+
+extra:
+  recipe-maintainers:
+    - chrisjsewell

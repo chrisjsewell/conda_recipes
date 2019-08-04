@@ -1,0 +1,40 @@
+{% set name = "pg8000" %}
+{% set version = "1.12.5" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 5d07ac0afc154897eaa2faff27b8f71e1d85719de5b92896cca33324a09d83f9
+
+build:
+  number: 0
+  noarch: python
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
+
+requirements:
+  host:
+    - pip
+    - python
+  run:
+    - python
+    - six >=1.10.0
+
+test:
+  imports:
+    - pg8000
+
+about:
+  home: https://github.com/tlocke/pg8000
+  license: BSD
+  license_family: BSD
+  license_file: LICENSE
+  summary: PostgreSQL interface library
+  doc_url: https://pypi.org/project/pg8000/
+  dev_url: https://github.com/tlocke/pg8000
+
+extra:
+  recipe-maintainers:
+    - chrisjsewell
