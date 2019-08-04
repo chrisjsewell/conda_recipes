@@ -25,7 +25,7 @@ Note this requires `conda install anaconda-client`
 Conda environments can also be uploaded:
 
 ```shell
-anaconda upload -d <description> environments/<name>.yaml
+anaconda upload -s <summary> environments/<name>.yaml
 ```
 
 This can be created locally using:
