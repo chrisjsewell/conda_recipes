@@ -105,6 +105,11 @@ dependencies:
   # in order to not causes version conflicts with flake8 3.7
   - toml =0.10.0
 
+  # to format notebook cells
+  # add `%load_ext nb_black` to the top of a notebook, then formatting is run on code execution
+  - black
+  - nb_black
+
   # docs
   - doc8
   - ipypublish >=0.10.8
