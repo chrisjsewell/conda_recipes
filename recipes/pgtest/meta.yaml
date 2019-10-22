@@ -1,5 +1,5 @@
 {% set name = "pgtest" %}
-{% set version = "1.3.0" %}
+{% set version = "1.3.1" %}
 
 package:
   name: "{{ name|lower }}"
@@ -7,7 +7,7 @@ package:
 
 source:
   url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: "3f055058723b26bdd6612726a7bf792f7630ff3f2a4b647e3a3c9bdc0192b641"
+  sha256: "b1aa5516b3f1215643c265e11c83099a7d6978a4bd1e59e63963b33fe7da08e6"
 
 build:
   number: 0

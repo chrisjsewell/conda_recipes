@@ -1,5 +1,5 @@
 {% set name = "seekpath" %}
-{% set version = "1.9.2" %}
+{% set version = "1.9.3" %}
 
 package:
   name: "{{ name|lower }}"
@@ -7,7 +7,7 @@ package:
 
 source:
   url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: "d9f7dd608666c5678037ed66448665535f551d2953ee804dbb19a4149444dceb"
+  sha256: "abc806479f11e7f71c4475a292d849baf15dfa1cbc89ecc602d78415de322c83"
 
 build:
   number: 0
